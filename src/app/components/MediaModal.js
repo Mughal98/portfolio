@@ -113,7 +113,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
       {/* Close button - lower position on mobile */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
+        className="absolute top-5 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
       >
         <X className="w-5 h-5 md:w-6 md:h-6" />
       </button>

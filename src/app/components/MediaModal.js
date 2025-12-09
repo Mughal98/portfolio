@@ -9,6 +9,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
   const [startX, setStartX] = useState(0);
   const [dragDistance, setDragDistance] = useState(0);
   const videoRef = useRef(null);
+  const nextVideoRef = useRef(null);
 
   useEffect(() => {
     setCurrentIndex(index);
@@ -20,6 +21,17 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
       document.body.style.overflow = "unset";
     };
   }, []);
+
+  // Preload next video in background
+  useEffect(() => {
+    if (currentIndex < media.items.length - 1 && media.type === "video") {
+      const nextVideo = media.items[currentIndex + 1].video;
+      if (nextVideoRef.current) {
+        nextVideoRef.current.src = nextVideo;
+        nextVideoRef.current.load();
+      }
+    }
+  }, [currentIndex, media]);
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -135,7 +147,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
               controls
               autoPlay
               className="max-w-full max-h-full rounded-lg"
-              preload="metadata"
+              preload="auto"
               playsInline
             />
           </div>
@@ -148,6 +160,11 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
           />
         )}
       </div>
+
+      {/* Hidden video for preloading next video */}
+      {media.type === "video" && currentIndex < media.items.length - 1 && (
+        <video ref={nextVideoRef} preload="auto" className="hidden" />
+      )}
 
       {/* Navigation buttons - hidden on mobile */}
       {currentIndex > 0 && (

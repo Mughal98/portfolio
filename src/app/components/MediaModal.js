@@ -49,21 +49,20 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
     }
   };
 
-  // Touch/Mouse drag handlers for images only
+  // Touch/Mouse drag handlers for both images and videos
   const handleDragStart = (e) => {
-    if (media.type === "video") return; // Disable drag for videos
     setIsDragging(true);
     setStartX(e.type === "touchstart" ? e.touches[0].clientX : e.clientX);
   };
 
   const handleDragMove = (e) => {
-    if (!isDragging || media.type === "video") return;
+    if (!isDragging) return;
     const currentX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
     setDragDistance(currentX - startX);
   };
 
   const handleDragEnd = () => {
-    if (!isDragging || media.type === "video") return;
+    if (!isDragging) return;
     if (Math.abs(dragDistance) > 100) {
       if (dragDistance > 0) handlePrev();
       else handleNext();
@@ -105,16 +104,16 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
   }, [currentIndex, media.type]);
 
   const currentItem = media.items[currentIndex];
-  const showNavButtons = window.innerWidth >= 768; // Hide on mobile
 
   return (
     <div
       className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center"
       onClick={onClose}
     >
+      {/* Close button - lower position on mobile */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
+        className="absolute top-12 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
       >
         <X className="w-5 h-5 md:w-6 md:h-6" />
       </button>
@@ -129,12 +128,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
         onTouchMove={handleDragMove}
         onTouchEnd={handleDragEnd}
         style={{
-          cursor:
-            media.type === "image"
-              ? isDragging
-                ? "grabbing"
-                : "grab"
-              : "default",
+          cursor: isDragging ? "grabbing" : "grab",
           transform: isDragging ? `translateX(${dragDistance}px)` : "none",
           transition: isDragging ? "none" : "transform 0.3s ease",
         }}
@@ -166,7 +160,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
         <video ref={nextVideoRef} preload="auto" className="hidden" />
       )}
 
-      {/* Navigation buttons - hidden on mobile */}
+      {/* Navigation buttons - only show on desktop */}
       {currentIndex > 0 && (
         <button
           onClick={(e) => {

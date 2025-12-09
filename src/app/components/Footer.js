@@ -10,7 +10,7 @@ export default function Footer() {
           href="https://www.instagram.com/design.x_x/"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 bg-white/10 hover:bg-[#ff5a0d] rounded-full flex items-center justify-center transition-colors"
+          className="w-12 h-12 bg-[#ff5a0d] hover:bg-[#ff820d] rounded-full flex items-center justify-center transition-colors"
         >
           <Instagram className="w-6 h-6" />
         </a>
@@ -18,13 +18,13 @@ export default function Footer() {
           href="https://wa.me/923191519691"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 bg-white/10 hover:bg-[#ff5a0d] rounded-full flex items-center justify-center transition-colors"
+          className="w-12 h-12 bg-[#ff5a0d] hover:bg-[#ff820d] rounded-full flex items-center justify-center transition-colors"
         >
           <MessageCircle className="w-6 h-6" />
         </a>
         <a
           href="mailto:designxmails@gmail.com"
-          className="w-12 h-12 bg-white/10 hover:bg-[#ff5a0d] rounded-full flex items-center justify-center transition-colors"
+          className="w-12 h-12 bg-[#ff5a0d] hover:bg-[#ff820d] rounded-full flex items-center justify-center transition-colors"
         >
           <Mail className="w-6 h-6" />
         </a>

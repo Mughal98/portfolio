@@ -111,8 +111,8 @@ export const DESIGNS_DATA = [
   { id: 4, url: "/images/designs/darkFight.jpg" },
   { id: 5, url: "/images/designs/burgerTaste.jpg" },
   { id: 6, url: "/images/designs/dog.jpg" },
-  { id: 7, url: "/images/designs/burger1.jpg" },
-  { id: 8, url: "/images/designs/pizzaFired.jpg" },
+  { id: 7, url: "/images/designs/pizzaFired.jpg" },
+  { id: 8, url: "/images/designs/burger1.jpg" },
 ];
 
 export const THUMBNAILS_DATA = [

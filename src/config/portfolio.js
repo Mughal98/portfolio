@@ -3,8 +3,7 @@ export const PORTFOLIO_CONFIG = {
     shorts: {
       enabled: true,
       title: "Shorts/Reels Edit",
-      description:
-        "Quick, engaging vertical content optimized for social media platforms",
+      description: "Engaging Short-form videos with Motion gfx & Animations",
     },
     longForm: {
       enabled: false,
@@ -17,7 +16,8 @@ export const PORTFOLIO_CONFIG = {
     designs: {
       enabled: true,
       title: "Illustration & Post",
-      description: "Creative illustrations and social media post designs",
+      description:
+        "Creative illustrations, Concept Art & social media post designs",
     },
     thumbnails: {
       enabled: true,

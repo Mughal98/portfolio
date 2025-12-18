@@ -3,21 +3,14 @@
 import React from "react";
 import { Play } from "lucide-react";
 import Link from "next/link";
-import ImageSlider from "./components/ImageSlider";
+import Testimonials from "./components/Testimonials";
 import { PORTFOLIO_CONFIG } from "@/config/portfolio";
-import { SHORTS_DATA } from "@/data/portfolio";
+import { SHORTS_DATA, TESTIMONIALS_DATA } from "@/data/portfolio";
 import { useModal } from "./providers/ModalProvider";
 
 export default function HomePage() {
   const { openModal } = useModal();
-  const reels = SHORTS_DATA.slice(0, 6); // Show 6 shorts
-
-  const sliderImages = [
-    { id: 1, url: "https://picsum.photos/1200/800?random=20" },
-    { id: 2, url: "https://picsum.photos/1200/800?random=21" },
-    { id: 3, url: "https://picsum.photos/1200/800?random=22" },
-    { id: 4, url: "https://picsum.photos/1200/800?random=23" },
-  ];
+  const reels = SHORTS_DATA.slice(0, 6);
 
   return (
     <>
@@ -47,13 +40,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Reels Section - Single Row with Small Cards */}
+      {/* Reels Section */}
       <section className="py-16 md:py-20 px-4 md:px-6 max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center">
           Latest Work
         </h2>
 
-        {/* Single row scrollable on mobile, grid on desktop */}
         <div className="relative">
           <div className="flex md:grid md:grid-cols-6 gap-3 md:gap-4 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-hide">
             {reels.map((reel, idx) => (
@@ -87,13 +79,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Image Slider Section */}
+      {/* Testimonials Section */}
       <section className="py-16 md:py-20 px-4 md:px-6 bg-white/5">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center">
-            Our Process
+            Client Testimonials
           </h2>
-          <ImageSlider images={sliderImages} />
+          <Testimonials testimonials={TESTIMONIALS_DATA} />
         </div>
       </section>
     </>

@@ -120,3 +120,34 @@ export const THUMBNAILS_DATA = [
   { id: 2, url: "/images/thumbnails-portfolio/hack.jpg" },
   { id: 3, url: "/images/thumbnails-portfolio/islam.jpg" },
 ];
+
+export const TESTIMONIALS_DATA = [
+  {
+    id: 1,
+    name: "Sufyan",
+    source: "Jano Tech",
+    image: "/images/testimonials/janoTech.jpg",
+    rating: 5,
+    quote:
+      "Absolutely Fantastic! Delivered what we imagined. Visual Explaination on Point. Highly recommended!",
+  },
+  {
+    id: 2,
+    name: "Harvey",
+    source: "Talkin' Ball",
+    image: "/images/testimonials/talkin.jpg",
+    rating: 4,
+    quote:
+      "We really appreciate this dedication, We certainly value it and are delighted with your work.",
+  },
+  {
+    id: 3,
+    name: "Regen",
+    source: "Regen Valorant",
+    image: "/images/testimonials/regen.jpg",
+    rating: 4,
+    quote:
+      "Worth money! Great experience working together. Looking forward to work again in future too.",
+  },
+  // Easy to add more testimonials here...
+];

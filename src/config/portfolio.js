@@ -26,7 +26,13 @@ export const PORTFOLIO_CONFIG = {
         "Eye-catching thumbnails designed to maximize click-through rates",
     },
   },
+  // NEW: Logo section
+  logoPage: {
+    enabled: true,
+    title: "Logo Designs",
+    description: "Brand identity and logo design with concept explorations",
+  },
   homePage: {
-    showReelsCount: 6, // Show 6 reels on homepage
+    showReelsCount: 6,
   },
 };

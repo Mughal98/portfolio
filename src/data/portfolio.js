@@ -151,3 +151,113 @@ export const TESTIMONIALS_DATA = [
   },
   // Easy to add more testimonials here...
 ];
+
+export const LOGOS_DATA = [
+  {
+    id: 1,
+    mainImage: "/images/logos/paySuite/main.webp",
+    title: "Card Payment",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/paySuite/1.webp" },
+      { id: 2, url: "/images/logos/paySuite/2.webp" },
+      { id: 3, url: "/images/logos/paySuite/3.webp" },
+    ],
+  },
+  {
+    id: 2,
+    mainImage: "/images/logos/blueBison/main.webp",
+    title: "Construction Co.",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/blueBison/1.webp" },
+      { id: 2, url: "/images/logos/blueBison/2.webp" },
+      { id: 3, url: "/images/logos/blueBison/3.webp" },
+    ],
+  },
+  {
+    id: 3,
+    mainImage: "/images/logos/cryptrading/main.webp",
+    title: "Crypto Trading",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/cryptrading/1.webp" },
+      { id: 2, url: "/images/logos/cryptrading/2.webp" },
+      { id: 3, url: "/images/logos/cryptrading/3.webp" },
+    ],
+  },
+  {
+    id: 4,
+    mainImage: "/images/logos/empathic/main.webp",
+    title: "AI driven App",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/empathic/1.webp" },
+      { id: 2, url: "/images/logos/empathic/2.webp" },
+      { id: 3, url: "/images/logos/empathic/3.webp" },
+    ],
+  },
+  {
+    id: 5,
+    mainImage: "/images/logos/storee/main.webp",
+    title: "E-commerce",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/storee/1.webp" },
+      { id: 2, url: "/images/logos/storee/2.webp" },
+      { id: 3, url: "/images/logos/storee/3.webp" },
+    ],
+  },
+  {
+    id: 6,
+    mainImage: "/images/logos/aqua/main.webp",
+    title: "Mineral Water",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/aqua/1.webp" },
+      { id: 2, url: "/images/logos/aqua/2.webp" },
+      { id: 3, url: "/images/logos/aqua/3.webp" },
+    ],
+  },
+  {
+    id: 7,
+    mainImage: "/images/logos/paradise/main.webp",
+    title: "Pure Coffee",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/paradise/1.webp" },
+      { id: 2, url: "/images/logos/paradise/2.webp" },
+    ],
+  },
+  {
+    id: 8,
+    mainImage: "/images/logos/nexbash/main.webp",
+    title: "Tech Conference",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/nexbash/1.webp" },
+      { id: 2, url: "/images/logos/nexbash/2.webp" },
+    ],
+  },
+  {
+    id: 9,
+    mainImage: "/images/logos/byteCash/main.webp",
+    title: "Digital Wallet",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/byteCash/1.webp" },
+      { id: 2, url: "/images/logos/byteCash/2.webp" },
+    ],
+  },
+
+  {
+    id: 10,
+    mainImage: "/images/logos/burgerFest/main.webp",
+    title: "Festival Event",
+    // description: "Modern tech startup branding",
+    children: [
+      { id: 1, url: "/images/logos/burgerFest/1.webp" },
+      { id: 2, url: "/images/logos/burgerFest/2.webp" },
+    ],
+  },
+];

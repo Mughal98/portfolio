@@ -9,6 +9,7 @@ export default function Navbar() {
 
   const isEditActive = pathname.startsWith("/edit");
   const isDesignsActive = pathname.startsWith("/designs");
+  const isLogoActive = pathname.startsWith("/logo");
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
@@ -45,6 +46,17 @@ export default function Navbar() {
               }`}
             >
               Designs
+            </button>
+          </Link>
+          <Link href="/logo">
+            <button
+              className={`text-lg font-medium transition-colors cursor-pointer ${
+                isLogoActive
+                  ? "text-[#ff5a0d]"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              Logo
             </button>
           </Link>
         </div>

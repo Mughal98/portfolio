@@ -81,7 +81,7 @@ export default function IllustrationsPage() {
               onClick={() =>
                 openModal({ type: "image", items: DESIGNS_DATA }, idx)
               }
-              className="relative aspect-square rounded-lg overflow-hidden cursor-pointer group"
+              className="relative aspect-square rounded-lg overflow-hidden cursor-pointer group "
               whileHover={{ scale: ANIMATION_CONFIG.hover.scale }}
               whileTap={{ scale: ANIMATION_CONFIG.tap.scale }}
               transition={{ duration: ANIMATION_CONFIG.hover.duration }}

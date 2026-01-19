@@ -6,7 +6,7 @@ export const PORTFOLIO_CONFIG = {
       description: "Engaging Short-form videos with Motion gfx & Animations",
     },
     longForm: {
-      enabled: false,
+      enabled: true,
       title: "Long/Youtube Edit",
       description:
         "In-depth storytelling and cinematic experiences for YouTube",

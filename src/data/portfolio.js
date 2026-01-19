@@ -84,23 +84,8 @@ export const SHORTS_DATA = [
 export const LONG_DATA = [
   {
     id: 1,
-    thumbnail: "/images/thumbnails/long/long-1-thumb.jpg",
-    video: "/videos/long/long-1.mp4",
-  },
-  {
-    id: 2,
-    thumbnail: "/images/thumbnails/long/long-2-thumb.jpg",
-    video: "/videos/long/long-2.mp4",
-  },
-  {
-    id: 3,
-    thumbnail: "/images/thumbnails/long/long-3-thumb.jpg",
-    video: "/videos/long/long-3.mp4",
-  },
-  {
-    id: 4,
-    thumbnail: "/images/thumbnails/long/long-4-thumb.jpg",
-    video: "/videos/long/long-4.mp4",
+    thumbnail: "/videos/thumbnails/long/food.jpg",
+    video: "/videos/long/food.mp4",
   },
 ];
 

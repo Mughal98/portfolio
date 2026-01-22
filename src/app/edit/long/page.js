@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { Play, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PORTFOLIO_CONFIG } from "@/config/portfolio";
@@ -19,6 +19,24 @@ export default function LongPage() {
   const { longForm: longFormConfig } = PORTFOLIO_CONFIG.editPage;
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const categories = useMemo(() => {
     const allCategories = new Set();
@@ -88,7 +106,7 @@ export default function LongPage() {
             </button>
           </Link>
 
-          <div className="relative ml-auto">
+          <div ref={dropdownRef} className="relative ml-auto">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="px-6 py-3 rounded-full text-lg font-semibold bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center gap-2"
@@ -159,7 +177,7 @@ export default function LongPage() {
             </Link>
           </div>
 
-          <div className="relative w-full">
+          <div ref={dropdownRef} className="relative w-full">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="w-full px-6 py-3 rounded-full text-lg font-semibold bg-white/10 text-white hover:bg-white/20 transition-colors flex items-center justify-center gap-2"

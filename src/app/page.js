@@ -74,7 +74,7 @@ export default function HomePage() {
           <div className="flex md:grid md:grid-cols-6 gap-3 md:gap-4 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory scrollbar-hide">
             {reels.map((reel, idx) => (
               <motion.div
-                key={reel.id}
+                key={reel.video}
                 variants={fadeInUp}
                 onClick={() =>
                   openModal({ type: "video", items: SHORTS_DATA }, idx)
@@ -86,7 +86,7 @@ export default function HomePage() {
               >
                 <img
                   src={reel.thumbnail}
-                  alt={`Reel ${reel.id}`}
+                  alt={`Reel ${idx + 1}`}
                   loading="eager"
                   className="w-full h-full object-cover transition-transform"
                 />

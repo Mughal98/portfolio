@@ -76,7 +76,7 @@ export default function ThumbnailsPage() {
         >
           {THUMBNAILS_DATA.map((item, idx) => (
             <motion.div
-              key={item.id}
+              key={item.url}
               variants={gridItem}
               onClick={() =>
                 openModal({ type: "image", items: THUMBNAILS_DATA }, idx)
@@ -88,7 +88,7 @@ export default function ThumbnailsPage() {
             >
               <img
                 src={item.url}
-                alt={`Thumbnail ${item.id}`}
+                alt={`Thumbnail ${idx + 1}`}
                 loading={idx < 4 ? "eager" : "lazy"}
                 className="w-full h-full object-cover transition-transform"
               />

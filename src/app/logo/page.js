@@ -100,7 +100,7 @@ export default function LogoPage() {
         >
           {LOGOS_DATA.map((logo, idx) => (
             <motion.div
-              key={logo.id}
+              key={logo.mainImage}
               variants={gridItem}
               onClick={() => openLogoModal(logo)}
               className="relative aspect-square rounded-lg overflow-hidden cursor-pointer group bg-white/5"

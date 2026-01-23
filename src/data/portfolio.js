@@ -97,6 +97,11 @@ export const LONG_DATA = [
     video: "/videos/long/food.mp4",
     category: ["food", "lifestyle"],
   },
+  {
+    thumbnail: "/videos/thumbnails/long/canGame.jpg",
+    video: "/videos/long/canGame.mp4",
+    category: ["gaming", "fun"],
+  },
 ];
 
 export const DESIGNS_DATA = [

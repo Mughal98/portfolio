@@ -1,109 +1,114 @@
+import { getR2Url } from "@/config/cloudflare";
+
+// SHORTS DATA - Vertical Videos (9:16)
 export const SHORTS_DATA = [
   {
-    thumbnail: "/videos/thumbnails/shorts/greatDP.jpg",
-    video: "/videos/shorts/greatDP.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/greatDP.jpg"),
+    video: getR2Url("videos/shorts/greatDP.mp4"),
     category: ["history", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/kodak.jpg",
-    video: "/videos/shorts/kodak.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/kodak.jpg"),
+    video: getR2Url("videos/shorts/kodak.mp4"),
     category: ["tech", "history", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/netflix.jpg",
-    video: "/videos/shorts/netflix.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/netflix.jpg"),
+    video: getR2Url("videos/shorts/netflix.mp4"),
     category: ["history", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/neuralink.jpg",
-    video: "/videos/shorts/neuralink.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/neuralink.jpg"),
+    video: getR2Url("videos/shorts/neuralink.mp4"),
     category: ["tech", "education", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/y2k.jpg",
-    video: "/videos/shorts/y2k.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/y2k.jpg"),
+    video: getR2Url("videos/shorts/y2k.mp4"),
     category: ["tech", "history", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/kante.jpg",
-    video: "/videos/shorts/kante.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/kante.jpg"),
+    video: getR2Url("videos/shorts/kante.mp4"),
     category: ["sports", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/shadiCard.jpg",
-    video: "/videos/shorts/shadiCard.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/shadiCard.jpg"),
+    video: getR2Url("videos/shorts/shadiCard.mp4"),
     category: ["lifestyle", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/appleEvent.jpg",
-    video: "/videos/shorts/appleEvent.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/appleEvent.jpg"),
+    video: getR2Url("videos/shorts/appleEvent.mp4"),
     category: ["tech", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/bitChat.jpg",
-    video: "/videos/shorts/bitChat.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/bitChat.jpg"),
+    video: getR2Url("videos/shorts/bitChat.mp4"),
     category: ["tech"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/blackBerry.jpg",
-    video: "/videos/shorts/blackBerry.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/blackBerry.jpg"),
+    video: getR2Url("videos/shorts/blackBerry.mp4"),
     category: ["tech", "history", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/yahoo.jpg",
-    video: "/videos/shorts/yahoo.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/yahoo.jpg"),
+    video: getR2Url("videos/shorts/yahoo.mp4"),
     category: ["tech", "history", "animation"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/htc.jpg",
-    video: "/videos/shorts/htc.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/htc.jpg"),
+    video: getR2Url("videos/shorts/htc.mp4"),
     category: ["tech", "history"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/est1.jpg",
-    video: "/videos/shorts/est1.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/est1.jpg"),
+    video: getR2Url("videos/shorts/est1.mp4"),
     category: ["estate", "map"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/est2.jpg",
-    video: "/videos/shorts/est2.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/est2.jpg"),
+    video: getR2Url("videos/shorts/est2.mp4"),
     category: ["estate", "map"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/iphone17.jpg",
-    video: "/videos/shorts/iphone17.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/iphone17.jpg"),
+    video: getR2Url("videos/shorts/iphone17.mp4"),
     category: ["tech"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/speedGun.jpg",
-    video: "/videos/shorts/speedGun.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/speedGun.jpg"),
+    video: getR2Url("videos/shorts/speedGun.mp4"),
     category: ["sports", "tech", "education"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/wannaCry.jpg",
-    video: "/videos/shorts/wannaCry.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/wannaCry.jpg"),
+    video: getR2Url("videos/shorts/wannaCry.mp4"),
     category: ["tech", "history"],
   },
   {
-    thumbnail: "/videos/thumbnails/shorts/fifa.jpg",
-    video: "/videos/shorts/fifa.mp4",
+    thumbnail: getR2Url("videos/thumbnails/shorts/fifa.jpg"),
+    video: getR2Url("videos/shorts/fifa.mp4"),
     category: ["sports", "education"],
   },
 ];
 
+// LONG DATA - Horizontal Videos (16:9)
 export const LONG_DATA = [
   {
-    thumbnail: "/videos/thumbnails/long/food.jpg",
-    video: "/videos/long/food.mp4",
+    thumbnail: getR2Url("videos/thumbnails/long/food.jpg"),
+    video: getR2Url("videos/long/food.mp4"),
     category: ["food", "lifestyle"],
   },
   {
-    thumbnail: "/videos/thumbnails/long/canGame.jpg",
-    video: "/videos/long/canGame.mp4",
+    thumbnail: getR2Url("videos/thumbnails/long/canGame.jpg"),
+    video: getR2Url("videos/long/canGame.mp4"),
     category: ["gaming", "fun"],
   },
 ];
 
+// Images - Keep local for now (or upload to R2 later)
 export const DESIGNS_DATA = [
   { url: "/images/designs/darkFire.jpg" },
   { url: "/images/designs/dua.jpg" },

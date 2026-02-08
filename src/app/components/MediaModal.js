@@ -8,11 +8,13 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [dragDistance, setDragDistance] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
   const nextVideoRef = useRef(null);
 
   useEffect(() => {
     setCurrentIndex(index);
+    setIsLoading(true);
   }, [index]);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
     };
   }, []);
 
-  // Preload next video in background
+  // Preload next video
   useEffect(() => {
     if (currentIndex < media.items.length - 1 && media.type === "video") {
       const nextVideo = media.items[currentIndex + 1].video;
@@ -49,20 +51,20 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
     }
   };
 
-  // Touch/Mouse drag handlers for both images and videos
   const handleDragStart = (e) => {
+    if (media.type === "video") return;
     setIsDragging(true);
     setStartX(e.type === "touchstart" ? e.touches[0].clientX : e.clientX);
   };
 
   const handleDragMove = (e) => {
-    if (!isDragging) return;
+    if (!isDragging || media.type === "video") return;
     const currentX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
     setDragDistance(currentX - startX);
   };
 
   const handleDragEnd = () => {
-    if (!isDragging) return;
+    if (!isDragging || media.type === "video") return;
     if (Math.abs(dragDistance) > 100) {
       if (dragDistance > 0) handlePrev();
       else handleNext();
@@ -78,22 +80,19 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
         return;
       }
 
-      // For videos: Arrow keys seek forward/backward
       if (media.type === "video" && videoRef.current) {
         if (e.key === "ArrowLeft") {
           videoRef.current.currentTime = Math.max(
             0,
-            videoRef.current.currentTime - 5
+            videoRef.current.currentTime - 5,
           );
         } else if (e.key === "ArrowRight") {
           videoRef.current.currentTime = Math.min(
             videoRef.current.duration,
-            videoRef.current.currentTime + 5
+            videoRef.current.currentTime + 5,
           );
         }
-      }
-      // For images: Arrow keys navigate between images
-      else if (media.type === "image") {
+      } else if (media.type === "image") {
         if (e.key === "ArrowLeft") handlePrev();
         if (e.key === "ArrowRight") handleNext();
       }
@@ -110,7 +109,6 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
       className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center"
       onClick={onClose}
     >
-      {/* Close button - lower position on mobile */}
       <button
         onClick={onClose}
         className="absolute top-5 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
@@ -128,13 +126,25 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
         onTouchMove={handleDragMove}
         onTouchEnd={handleDragEnd}
         style={{
-          cursor: isDragging ? "grabbing" : "grab",
+          cursor:
+            media.type === "image"
+              ? isDragging
+                ? "grabbing"
+                : "grab"
+              : "default",
           transform: isDragging ? `translateX(${dragDistance}px)` : "none",
           transition: isDragging ? "none" : "transform 0.3s ease",
         }}
       >
         {media.type === "video" ? (
           <div className="relative w-full h-full flex items-center justify-center">
+            {/* Loading spinner */}
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 border-4 border-[#ff5a0d] border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            )}
+
             <video
               ref={videoRef}
               src={currentItem.video}
@@ -143,24 +153,27 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
               className="max-w-full max-h-full rounded-lg"
               preload="auto"
               playsInline
+              onLoadedData={() => setIsLoading(false)}
+              onWaiting={() => setIsLoading(true)}
+              onPlaying={() => setIsLoading(false)}
             />
           </div>
         ) : (
           <img
             src={currentItem.url}
-            alt={`Item ${currentIndex}`}
+            alt={`Item ${currentIndex + 1}`}
             className="max-w-full max-h-full object-contain rounded-lg select-none"
             draggable={false}
           />
         )}
       </div>
 
-      {/* Hidden video for preloading next video */}
+      {/* Hidden video for preloading */}
       {media.type === "video" && currentIndex < media.items.length - 1 && (
         <video ref={nextVideoRef} preload="auto" className="hidden" />
       )}
 
-      {/* Navigation buttons - only show on desktop */}
+      {/* Navigation buttons */}
       {currentIndex > 0 && (
         <button
           onClick={(e) => {

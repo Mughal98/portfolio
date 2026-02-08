@@ -1,6 +1,9 @@
 import { getR2Url } from "@/config/cloudflare";
 
-// SHORTS DATA - Vertical Videos (9:16)
+// ====================================
+// VIDEOS - Using Cloudflare R2
+// ====================================
+
 export const SHORTS_DATA = [
   {
     thumbnail: getR2Url("videos/thumbnails/shorts/greatDP.jpg"),
@@ -94,7 +97,6 @@ export const SHORTS_DATA = [
   },
 ];
 
-// LONG DATA - Horizontal Videos (16:9)
 export const LONG_DATA = [
   {
     thumbnail: getR2Url("videos/thumbnails/long/food.jpg"),
@@ -108,7 +110,10 @@ export const LONG_DATA = [
   },
 ];
 
-// Images - Keep local for now (or upload to R2 later)
+// ====================================
+// IMAGES - Using Local Paths
+// ====================================
+
 export const DESIGNS_DATA = [
   { url: "/images/designs/darkFire.jpg" },
   { url: "/images/designs/dua.jpg" },

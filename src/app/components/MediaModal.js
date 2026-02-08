@@ -10,13 +10,14 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
   const [dragDistance, setDragDistance] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
-  const nextVideoRef = useRef(null);
 
+  // Update index when prop changes
   useEffect(() => {
     setCurrentIndex(index);
     setIsLoading(true);
   }, [index]);
 
+  // Lock body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -24,16 +25,34 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
     };
   }, []);
 
-  // Preload next video
+  // Handle video source changes - CRITICAL for navigation
   useEffect(() => {
-    if (currentIndex < media.items.length - 1 && media.type === "video") {
-      const nextVideo = media.items[currentIndex + 1].video;
-      if (nextVideoRef.current) {
-        nextVideoRef.current.src = nextVideo;
-        nextVideoRef.current.load();
-      }
+    if (media.type === "video" && videoRef.current) {
+      const currentItem = media.items[currentIndex];
+
+      // Force reload the video
+      setIsLoading(true);
+      videoRef.current.src = currentItem.video;
+      videoRef.current.load();
+
+      // Auto-play when ready
+      const handleLoaded = () => {
+        setIsLoading(false);
+        videoRef.current.play().catch((err) => {
+          console.log("Auto-play prevented:", err);
+          setIsLoading(false);
+        });
+      };
+
+      videoRef.current.addEventListener("loadeddata", handleLoaded, {
+        once: true,
+      });
+
+      return () => {
+        videoRef.current?.removeEventListener("loadeddata", handleLoaded);
+      };
     }
-  }, [currentIndex, media]);
+  }, [currentIndex, media.type, media.items]);
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -52,7 +71,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
   };
 
   const handleDragStart = (e) => {
-    if (media.type === "video") return;
+    if (media.type === "video") return; // No drag for videos
     setIsDragging(true);
     setStartX(e.type === "touchstart" ? e.touches[0].clientX : e.clientX);
   };
@@ -73,6 +92,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
     setDragDistance(0);
   };
 
+  // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -81,6 +101,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
       }
 
       if (media.type === "video" && videoRef.current) {
+        // For videos: Arrow keys seek forward/backward
         if (e.key === "ArrowLeft") {
           videoRef.current.currentTime = Math.max(
             0,
@@ -93,6 +114,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
           );
         }
       } else if (media.type === "image") {
+        // For images: Arrow keys navigate
         if (e.key === "ArrowLeft") handlePrev();
         if (e.key === "ArrowRight") handleNext();
       }
@@ -109,6 +131,7 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
       className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center"
       onClick={onClose}
     >
+      {/* Close button */}
       <button
         onClick={onClose}
         className="absolute top-5 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
@@ -140,47 +163,52 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Loading spinner */}
             {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="w-16 h-16 border-4 border-[#ff5a0d] border-t-transparent rounded-full animate-spin"></div>
               </div>
             )}
 
+            {/* Video element - key forces remount on index change */}
             <video
+              key={currentIndex}
               ref={videoRef}
-              src={currentItem.video}
               controls
-              autoPlay
               className="max-w-full max-h-full rounded-lg"
-              preload="auto"
+              preload="metadata"
               playsInline
               onLoadedData={() => setIsLoading(false)}
               onWaiting={() => setIsLoading(true)}
               onPlaying={() => setIsLoading(false)}
-            />
+              onError={(e) => {
+                console.error("Video load error:", e);
+                console.error("Video URL:", currentItem.video);
+                setIsLoading(false);
+              }}
+            >
+              <source src={currentItem.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ) : (
           <img
+            key={currentIndex}
             src={currentItem.url}
             alt={`Item ${currentIndex + 1}`}
             className="max-w-full max-h-full object-contain rounded-lg select-none"
             draggable={false}
+            loading="lazy"
           />
         )}
       </div>
 
-      {/* Hidden video for preloading */}
-      {media.type === "video" && currentIndex < media.items.length - 1 && (
-        <video ref={nextVideoRef} preload="auto" className="hidden" />
-      )}
-
-      {/* Navigation buttons */}
+      {/* Navigation buttons - Desktop only */}
       {currentIndex > 0 && (
         <button
           onClick={(e) => {
             e.stopPropagation();
             handlePrev();
           }}
-          className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full items-center justify-center transition-colors"
+          className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full items-center justify-center transition-colors z-20"
         >
           <ChevronLeft className="w-8 h-8" />
         </button>
@@ -192,12 +220,13 @@ export default function MediaModal({ media, index, onClose, onNavigate }) {
             e.stopPropagation();
             handleNext();
           }}
-          className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full items-center justify-center transition-colors"
+          className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/10 hover:bg-white/20 rounded-full items-center justify-center transition-colors z-20"
         >
           <ChevronRight className="w-8 h-8" />
         </button>
       )}
 
+      {/* Counter */}
       <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm md:text-base">
         {currentIndex + 1} / {media.items.length}
       </div>

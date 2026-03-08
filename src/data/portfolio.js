@@ -11,6 +11,11 @@ export const SHORTS_DATA = [
     category: ["history", "animation"],
   },
   {
+    thumbnail: getR2Url("videos/thumbnails/shorts/andrewRibs.jpg"),
+    video: getR2Url("videos/shorts/andrewRibs.mp4"),
+    category: ["sports", "animation"],
+  },
+  {
     thumbnail: getR2Url("videos/thumbnails/shorts/kodak.jpg"),
     video: getR2Url("videos/shorts/kodak.mp4"),
     category: ["tech", "history", "animation"],

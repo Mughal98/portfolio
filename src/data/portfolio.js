@@ -133,6 +133,14 @@ export const THUMBNAILS_DATA = [
 
 export const TESTIMONIALS_DATA = [
   {
+    name: "Andrew",
+    source: "Altum Athletics",
+    image: "/images/testimonials/andrew.jpg",
+    rating: 5,
+    quote:
+      "Took simple clip and really turned into a valuable piece of highly engaging content. Fast and communicated well throughout.",
+  },
+  {
     name: "Sufyan",
     source: "Jano Tech",
     image: "/images/testimonials/janoTech.jpg",

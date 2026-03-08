@@ -143,7 +143,7 @@ export const TESTIMONIALS_DATA = [
     image: "/images/testimonials/andrew.jpg",
     rating: 5,
     quote:
-      "Took simple clip and really turned into a valuable piece of highly engaging content. Fast and communicated well throughout.",
+      "Simple clip and turned into a valuable piece of highly engaging content. Fast and communicated well throughout.",
   },
   {
     name: "Sufyan",

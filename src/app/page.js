@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-[40vh] md:h-[75vh] lg:h-screen w-full overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
@@ -32,13 +32,15 @@ export default function HomePage() {
           preload="auto"
         >
           <source
-            src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            src="https://pub-7b57a9f4d799487c9b7389d3540c7e2a.r2.dev/videos/tease.mp4"
             type="video/mp4"
           />
         </video>
+
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70" />
+
         <motion.div
-          className="absolute bottom-20 left-0 right-0 text-center px-4"
+          className="absolute bottom-8 md:bottom-16 lg:bottom-20 left-0 right-0 text-center px-4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -46,10 +48,11 @@ export default function HomePage() {
             delay: ANIMATION_CONFIG.hero.delay,
           }}
         >
-          <h1 className="text-4xl md:text-7xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold mb-2 md:mb-4">
             Creative Portfolio
           </h1>
-          <p className="text-lg md:text-2xl text-white/80">
+
+          <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/80">
             Bringing Stories to Life
           </p>
         </motion.div>

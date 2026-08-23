@@ -115,6 +115,11 @@ export const LONG_DATA = [
   },
 ];
 
+export const COLOR_GRADE_DATA = {
+  raw: getR2Url("videos/color/color-raw.mp4"),
+  graded: getR2Url("videos/color/color-graded.mp4"),
+};
+
 // ====================================
 // IMAGES - Using Local Paths
 // ====================================

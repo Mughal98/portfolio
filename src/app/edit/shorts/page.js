@@ -105,6 +105,13 @@ export default function ShortsPage() {
               </button>
             </Link>
           )}
+          {PORTFOLIO_CONFIG.editPage.colorGrade.enabled && (
+            <Link href="/edit/color">
+              <button className="px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
+                Color Grade
+              </button>
+            </Link>
+          )}
 
           <div ref={dropdownRef} className="relative ml-auto">
             <button
@@ -176,6 +183,13 @@ export default function ShortsPage() {
               </Link>
             )}
           </div>
+          {PORTFOLIO_CONFIG.editPage.colorGrade.enabled && (
+            <Link href="/edit/color">
+              <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
+                Color Grade
+              </button>
+            </Link>
+          )}
 
           <div ref={dropdownRef} className="relative w-full">
             <button

@@ -11,6 +11,12 @@ export const PORTFOLIO_CONFIG = {
       description:
         "In-depth storytelling and cinematic experiences for YouTube",
     },
+    // NEW: Color Grade section
+    colorGrade: {
+      enabled: true,
+      title: "Color Grade",
+      description: "Cinematic color grading and visual tone transformations",
+    },
   },
   designsPage: {
     designs: {
@@ -26,7 +32,6 @@ export const PORTFOLIO_CONFIG = {
         "Eye-catching thumbnails designed to maximize click-through rates",
     },
   },
-  // NEW: Logo section
   logoPage: {
     enabled: true,
     title: "Logo Designs",

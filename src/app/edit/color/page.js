@@ -80,27 +80,27 @@ export default function ColorGradePage() {
             delay: 0.2,
           }}
         >
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             {PORTFOLIO_CONFIG.editPage.shorts.enabled && (
               <Link href="/edit/shorts" className="flex-1">
-                <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
+                <button className="w-full px-3 py-2.5 rounded-full text-sm font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
                   Shorts
                 </button>
               </Link>
             )}
             {PORTFOLIO_CONFIG.editPage.longForm.enabled && (
               <Link href="/edit/long" className="flex-1">
-                <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
+                <button className="w-full px-3 py-2.5 rounded-full text-sm font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
                   Long Form
                 </button>
               </Link>
             )}
+            <Link href="/edit/color" className="flex-1">
+              <button className="w-full px-3 py-2.5 rounded-full text-sm font-semibold transition-colors bg-[#ff5a0d] text-white">
+                Color Grade
+              </button>
+            </Link>
           </div>
-          <Link href="/edit/color">
-            <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-[#ff5a0d] text-white">
-              Color Grade
-            </button>
-          </Link>
         </motion.div>
 
         {/* Before/After Slider */}

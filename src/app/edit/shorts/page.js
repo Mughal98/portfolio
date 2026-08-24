@@ -169,27 +169,27 @@ export default function ShortsPage() {
             delay: 0.2,
           }}
         >
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <Link href="/edit/shorts" className="flex-1">
-              <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-[#ff5a0d] text-white">
+              <button className="w-full px-3 py-2.5 rounded-full text-sm font-semibold transition-colors bg-[#ff5a0d] text-white">
                 Shorts
               </button>
             </Link>
             {PORTFOLIO_CONFIG.editPage.longForm.enabled && (
               <Link href="/edit/long" className="flex-1">
-                <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
+                <button className="w-full px-3 py-2.5 rounded-full text-sm font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
                   Long Form
                 </button>
               </Link>
             )}
+            {PORTFOLIO_CONFIG.editPage.colorGrade.enabled && (
+              <Link href="/edit/color" className="flex-1">
+                <button className="w-full px-3 py-2.5 rounded-full text-sm font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
+                  Color Grade
+                </button>
+              </Link>
+            )}
           </div>
-          {PORTFOLIO_CONFIG.editPage.colorGrade.enabled && (
-            <Link href="/edit/color">
-              <button className="w-full px-8 py-3 rounded-full text-lg font-semibold transition-colors bg-white/10 text-white/70 hover:bg-white/20">
-                Color Grade
-              </button>
-            </Link>
-          )}
 
           <div ref={dropdownRef} className="relative w-full">
             <button

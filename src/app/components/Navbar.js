@@ -11,7 +11,6 @@ export default function Navbar() {
 
   const isEditActive = pathname.startsWith("/edit");
   const isDesignsActive = pathname.startsWith("/designs");
-  const isLogoActive = pathname.startsWith("/logo");
 
   return (
     <>
@@ -40,9 +39,6 @@ export default function Navbar() {
             </NavItem>
             <NavItem href="/designs/illustrations" active={isDesignsActive}>
               Designs
-            </NavItem>
-            <NavItem href="/logo" active={isLogoActive}>
-              Logo
             </NavItem>
           </div>
 
@@ -95,9 +91,6 @@ export default function Navbar() {
           >
             Designs
           </MobileItem>
-          <MobileItem href="/logo" active={isLogoActive} onClick={setOpen}>
-            Logo
-          </MobileItem>
         </div>
       </div>
     </>
@@ -133,4 +126,3 @@ function MobileItem({ href, active, children, onClick }) {
     </Link>
   );
 }
-

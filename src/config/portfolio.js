@@ -32,11 +32,6 @@ export const PORTFOLIO_CONFIG = {
         "Eye-catching thumbnails designed to maximize click-through rates",
     },
   },
-  logoPage: {
-    enabled: true,
-    title: "Logo Designs",
-    description: "Brand identity and logo design with concept explorations",
-  },
   homePage: {
     showReelsCount: 6,
   },

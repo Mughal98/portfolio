@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { PORTFOLIO_CONFIG } from "@/config/portfolio";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -11,6 +12,7 @@ export default function Navbar() {
 
   const isEditActive = pathname.startsWith("/edit");
   const isDesignsActive = pathname.startsWith("/designs");
+  const showDesigns = PORTFOLIO_CONFIG.designsPage.visibleInNav;
 
   return (
     <>
@@ -37,9 +39,11 @@ export default function Navbar() {
             <NavItem href="/edit/shorts" active={isEditActive}>
               Edit
             </NavItem>
-            <NavItem href="/designs/illustrations" active={isDesignsActive}>
-              Designs
-            </NavItem>
+            {showDesigns && (
+              <NavItem href="/designs/illustrations" active={isDesignsActive}>
+                Designs
+              </NavItem>
+            )}
           </div>
 
           {/* Hamburger / Cross */}
@@ -84,13 +88,15 @@ export default function Navbar() {
           >
             Edit
           </MobileItem>
-          <MobileItem
-            href="/designs/illustrations"
-            active={isDesignsActive}
-            onClick={setOpen}
-          >
-            Designs
-          </MobileItem>
+          {showDesigns && (
+            <MobileItem
+              href="/designs/illustrations"
+              active={isDesignsActive}
+              onClick={setOpen}
+            >
+              Designs
+            </MobileItem>
+          )}
         </div>
       </div>
     </>

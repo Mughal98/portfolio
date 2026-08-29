@@ -19,6 +19,8 @@ export const PORTFOLIO_CONFIG = {
     },
   },
   designsPage: {
+    // Set to false to hide "Designs" from navbar (route still works if visited directly)
+    visibleInNav: false,
     designs: {
       enabled: true,
       title: "Illustration & Post",

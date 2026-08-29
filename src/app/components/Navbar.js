@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const isEditActive = pathname.startsWith("/edit");
+  const isEditActive = pathname.startsWith("/edits");
   const isDesignsActive = pathname.startsWith("/designs");
   const showDesigns = PORTFOLIO_CONFIG.designsPage.visibleInNav;
 
@@ -36,8 +36,8 @@ export default function Navbar() {
 
           {/* Desktop */}
           <div className="hidden md:flex gap-8">
-            <NavItem href="/edit/shorts" active={isEditActive}>
-              Edit
+            <NavItem href="/edits/shorts" active={isEditActive}>
+              Edits
             </NavItem>
             {showDesigns && (
               <NavItem href="/designs/illustrations" active={isDesignsActive}>
@@ -82,11 +82,11 @@ export default function Navbar() {
       >
         <div className="pr-12 flex flex-col gap-8 text-right">
           <MobileItem
-            href="/edit/shorts"
+            href="/edits/shorts"
             active={isEditActive}
             onClick={setOpen}
           >
-            Edit
+            Edits
           </MobileItem>
           {showDesigns && (
             <MobileItem

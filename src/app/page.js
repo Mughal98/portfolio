@@ -102,7 +102,7 @@ export default function HomePage() {
         </motion.div>
 
         <motion.div className="text-center mt-8 md:mt-12" {...scaleIn}>
-          <Link href="/edit/shorts">
+          <Link href="/edits/shorts">
             <motion.button
               className="px-6 md:px-8 py-3 md:py-4 bg-[#ff5a0d] hover:bg-[#ff6a1d] rounded-full text-base md:text-lg font-semibold transition-colors"
               whileHover={{ scale: ANIMATION_CONFIG.hover.scale }}
